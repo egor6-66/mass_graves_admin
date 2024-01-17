@@ -1,0 +1,8 @@
+@import "src/app/styles";
+
+.wrapper {
+  @include box-size(100%, 100vh);
+  @include flex-column;
+  gap: 12px;
+  background-color: var(--bg-primary);
+}
