@@ -7,7 +7,7 @@ import * as TitleTypes from './types';
 import { Box } from '../index';
 
 function Title(props: TitleTypes.Props) {
-    const { color = '', maxLength, children, isError, textWrap, variant = 'primary', textAlign = 'left' } = props;
+    const { visible = true, color = '', maxLength, children, isError, textWrap, variant = 'primary', textAlign = 'left' } = props;
 
     const cx = cnBind.bind(styles);
 
@@ -21,7 +21,7 @@ function Title(props: TitleTypes.Props) {
     );
 
     return (
-        <Box style={{ textAlign }} className={classes}>
+        <Box visible={visible} style={{ textAlign }} className={classes}>
             {children}
         </Box>
     );

@@ -13,12 +13,11 @@ export type Props = {
     realtimeValidate?: boolean;
     debounceDelay?: number;
     callback?: (arg: InputAttrs['value']) => void;
-    callbackPhone?: (phone: string | number) => void;
     onFocus?: (value: boolean) => void;
     onlyNumber?: boolean;
 };
 
-const useInput = ({ initialValue = '', yupSchema, realtimeValidate, callback, debounceDelay, callbackPhone, onFocus, onlyNumber }: Props) => {
+const useInput = ({ initialValue = '', yupSchema, realtimeValidate, callback, debounceDelay, onFocus, onlyNumber }: Props) => {
     const firstRender = useRef(true);
     const [value, setValue] = useState(initialValue || '');
     const [error, setError] = useState('');
@@ -85,14 +84,12 @@ const useInput = ({ initialValue = '', yupSchema, realtimeValidate, callback, de
             onChange,
             onFocus: onFocusClearError,
         },
-
         error: !!error,
         clear,
         errorTitle: error,
         asyncValidate,
         setError,
         reload,
-        callbackPhone,
         focus: onFocus,
     };
 };

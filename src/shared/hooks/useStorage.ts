@@ -2,36 +2,36 @@ import Cookies from 'universal-cookie';
 
 const ls = window.localStorage;
 const cookies = new Cookies(null, { path: '/' });
-export type ValuesInStorage = 'access_token' | 'refresh_token' | 'theme';
-
+export type ValuesInCookies = 'accessToken' | 'refreshToken' | 'device_id';
+export type ValuesInLS = 'theme';
 function useStorage() {
-    const lsSet = (name: ValuesInStorage, value: any) => {
+    const lsSet = (name: ValuesInLS, value: any) => {
         ls.setItem(name, typeof value === 'string' ? value : JSON.stringify(value));
     };
 
-    const lsGet = <T = any>(name: ValuesInStorage): T | null => {
+    const lsGet = <T = any>(name: ValuesInLS): T | null => {
         const valueInLs = ls.getItem(name);
         if (!valueInLs) return null;
         if (valueInLs[0] === '{' && valueInLs[valueInLs.length - 1] === '}') return JSON.parse(valueInLs);
         return valueInLs as T;
     };
 
-    const lsRemove = (name: ValuesInStorage) => {
+    const lsRemove = (name: ValuesInLS) => {
         ls.removeItem(name);
     };
 
-    const cookiesSet = (name: ValuesInStorage, value: any) => {
+    const cookiesSet = (name: ValuesInCookies, value: any) => {
         cookies.set(name, typeof value === 'string' ? value : JSON.stringify(value));
     };
 
-    const cookiesGet = <T = any>(name: ValuesInStorage): T | null => {
+    const cookiesGet = <T = any>(name: ValuesInCookies): T | null => {
         const valueInLs = cookies.get(name);
         if (!valueInLs) return null;
         if (valueInLs[0] === '{' && valueInLs[valueInLs.length - 1] === '}') return JSON.parse(valueInLs);
         return valueInLs as T;
     };
 
-    const cookiesRemove = (name: ValuesInStorage) => {
+    const cookiesRemove = (name: ValuesInCookies) => {
         cookies.remove(name);
     };
 

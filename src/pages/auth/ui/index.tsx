@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 function AuthPage() {
     return (
-        <Box className={styles.wrapper}>
+        <Box presence={false} className={styles.wrapper}>
             <Title textAlign="center" variant="H1">
                 ADMIN
             </Title>

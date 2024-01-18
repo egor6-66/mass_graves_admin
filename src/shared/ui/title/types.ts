@@ -20,6 +20,7 @@ export type TitleVariants =
 export type Props = {
     children: string | number | undefined;
     variant: TitleVariants;
+    visible?: boolean;
     isError?: boolean;
     className?: string;
     textWrap?: boolean;
