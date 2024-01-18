@@ -5,5 +5,5 @@ import { Route } from 'react-router-dom';
 import MainPage from './ui';
 
 const mainRoutes = <Route path="/main" element={<MainPage />} />;
-
+//
 export default mainRoutes;
